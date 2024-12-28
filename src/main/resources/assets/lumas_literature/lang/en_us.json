@@ -1,0 +1,15 @@
+{
+  "block.lumas_literature.bookshelf_spruce" : "Spruce Bookshelf",
+  "block.lumas_literature.bookshelf_birch" : "Birch Bookshelf",
+  "block.lumas_literature.bookshelf_jungle" : "Jungle Bookshelf",
+  "block.lumas_literature.bookshelf_crimson" : "Crimson Bookshelf",
+  "block.lumas_literature.bookshelf_stone" : "Stone Bookshelf",
+  "block.lumas_literature.bookshelf_acacia" : "Acacia Bookshelf",
+  "block.lumas_literature.bookshelf_warped" : "Warped Bookshelf",
+  "block.lumas_literature.bookshelf_dark_oak" : "Dark Oak Bookshelf",
+  "block.lumas_literature.bookshelf_mangrove" : "Mangrove Bookshelf",
+  "block.lumas_literature.bookshelf_cherry" : "Cherry Bookshelf",
+  "block.lumas_literature.bookshelf_bamboo" : "Bamboo Bookshelf",
+  "block.lumas_literature.bookshelf_mossy_stone" : "Mossy Stone Bookshelf",
+  "block.minecraft.bookshelf": "Oak Bookshelf"
+}

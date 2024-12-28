@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "minecraft:block/mossy_cobblestone",
+    "side": "lumas_literature:block/bookshelf_mossy_stone"
+  }
+}
