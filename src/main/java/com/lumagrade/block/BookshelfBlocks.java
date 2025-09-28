@@ -3,7 +3,8 @@ package com.lumagrade.block;
 import com.lumagrade.Lumas_literature;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+//import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
@@ -15,109 +16,104 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
+import java.util.function.Function;
+
 public class BookshelfBlocks {
 
-    public static final Block BOOKSHELF_SPRUCE = registerBlock("bookshelf_spruce", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_ACACIA = registerBlock("bookshelf_acacia", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_BIRCH = registerBlock("bookshelf_birch", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_CRIMSON = registerBlock("bookshelf_crimson", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_DARK_OAK = registerBlock("bookshelf_dark_oak", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_JUNGLE = registerBlock("bookshelf_jungle", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_WARPED = registerBlock("bookshelf_warped", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_STONE = registerBlock("bookshelf_stone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.STONE)));
-    public static final Block BOOKSHELF_MANGROVE = registerBlock("bookshelf_mangrove", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_CHERRY = registerBlock("bookshelf_cherry", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_BAMBOO = registerBlock("bookshelf_bamboo", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable()));
-    public static final Block BOOKSHELF_MOSSY_STONE = registerBlock("bookshelf_mossy_stone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.STONE)));
-
+    // TODO for future
     // Add Chiseled variants?
     // Add Pale oak for 1.21.2 ->
     // Test Villager behaviour?
     // Spawn to somewhere?
 
+    public static final Block BOOKSHELF_SPRUCE = register("bookshelf_spruce",Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_ACACIA = register("bookshelf_acacia", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_BIRCH = register("bookshelf_birch", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_CRIMSON = register("bookshelf_crimson", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_DARK_OAK = register("bookshelf_dark_oak", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_JUNGLE = register("bookshelf_jungle", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_WARPED = register("bookshelf_warped", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_STONE = register("bookshelf_stone", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.STONE), true);
+    public static final Block BOOKSHELF_MANGROVE = register("bookshelf_mangrove", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_CHERRY = register("bookshelf_cherry", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_BAMBOO = register("bookshelf_bamboo", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.WOOD).burnable(), true);
+    public static final Block BOOKSHELF_MOSSY_STONE = register("bookshelf_mossy_stone", Block::new, AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(1.5F).sounds(BlockSoundGroup.STONE), true);
 
-    private static Block registerBlock(String name, Block block){
-        registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, Identifier.of(Lumas_literature.MOD_ID, name), block);
-    }
 
-
-    private static void registerBlockItem(String name, Block block){
-        Registry.register(Registries.ITEM, Identifier.of(Lumas_literature.MOD_ID, name),
-                new BlockItem(block, new Item.Settings()));
-    }
-
-
-    public static void registerModBlocks() {
-        Lumas_literature.LOGGER.info("Registering ModBlocks for " + Lumas_literature.MOD_ID);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
-            entries.add(BookshelfBlocks.BOOKSHELF_SPRUCE);
-            entries.add(BookshelfBlocks.BOOKSHELF_ACACIA);
-            entries.add(BookshelfBlocks.BOOKSHELF_BIRCH);
-            entries.add(BookshelfBlocks.BOOKSHELF_CRIMSON);
-            entries.add(BookshelfBlocks.BOOKSHELF_DARK_OAK);
-            entries.add(BookshelfBlocks.BOOKSHELF_JUNGLE);
-            entries.add(BookshelfBlocks.BOOKSHELF_WARPED);
-            entries.add(BookshelfBlocks.BOOKSHELF_STONE);
-            entries.add(BookshelfBlocks.BOOKSHELF_MANGROVE);
-            entries.add(BookshelfBlocks.BOOKSHELF_CHERRY);
-            entries.add(BookshelfBlocks.BOOKSHELF_BAMBOO);
-            entries.add(BookshelfBlocks.BOOKSHELF_MOSSY_STONE);
+    public static void initialize() {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register((itemGroup) -> {
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_ACACIA.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_BIRCH.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_BAMBOO.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_CHERRY.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_CRIMSON.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_SPRUCE.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_JUNGLE.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_STONE.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_MANGROVE.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_WARPED.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_DARK_OAK.asItem());
+            itemGroup.add(BookshelfBlocks.BOOKSHELF_MOSSY_STONE.asItem());
         });
+
+        registerBlocksAsFlammable();
+        registerBlocksAsFuels();
     }
 
 
+    private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
+        // Create a registry key for the block
+        RegistryKey<Block> blockKey = keyOfBlock(name);
+        // Create the block instance
+        Block block = blockFactory.apply(settings.registryKey(blockKey));
 
+        // Sometimes, you may not want to register an item for the block.
+        // Eg: if it's a technical block like `minecraft:moving_piston` or `minecraft:end_gateway`
+        if (shouldRegisterItem) {
+            // Items need to be registered with a different type of registry key, but the ID
+            // can be the same.
+            RegistryKey<Item> itemKey = keyOfItem(name);
 
+            BlockItem blockItem = new BlockItem(block, new Item.Settings().registryKey(itemKey).useBlockPrefixedTranslationKey());
+            Registry.register(Registries.ITEM, itemKey, blockItem);
+        }
 
+        return Registry.register(Registries.BLOCK, blockKey, block);
+    }
 
+    private static RegistryKey<Block> keyOfBlock(String name) {
+        return RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Lumas_literature.MOD_ID, name));
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Bookshelves can be used as a fuel in furnaces, smelting 1.5 items per block.
-    // TEST
-    public static void registerBlocksAsFuel(Block block){
-        FuelRegistry.INSTANCE.add(block, 300);
-        //LumasLiterature.LOGGER.info("Registering as fuel: " + block);
-
-       /*
-        FuelRegistry.INSTANCE.add(BOOKSHELF_SPRUCE, 300);
-        FuelRegistry.INSTANCE.add(BOOKSHELF_ACACIA, 300);
-        FuelRegistry.INSTANCE.add(BOOKSHELF_BIRCH, 300);
-        FuelRegistry.INSTANCE.add(BOOKSHELF_CRIMSON, 300);
-        FuelRegistry.INSTANCE.add(BOOKSHELF_DARK_OAK, 300);
-        FuelRegistry.INSTANCE.add(BOOKSHELF_JUNGLE, 300);
-        FuelRegistry.INSTANCE.add(BOOKSHELF_STONE, 300);
-        FuelRegistry.INSTANCE.add(BOOKSHELF_WARPED, 300);
-        */
+    private static RegistryKey<Item> keyOfItem(String name) {
+        return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Lumas_literature.MOD_ID, name));
     }
 
 
     public static void registerBlocksAsFlammable(){
         FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_SPRUCE, 30, 20);
-        //FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_ACACIA, 30, 20);
-        //FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_BIRCH, 30, 20);
-        //FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_CRIMSON, 30, 20);
-        //FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_DARK_OAK, 30, 20);
-        //FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_JUNGLE, 30, 20);
-        //FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_STONE, 30, 20);
-        //FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_WARPED, 30, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_ACACIA, 30, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_BIRCH, 30, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_CRIMSON, 30, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_DARK_OAK, 30, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_JUNGLE, 30, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BOOKSHELF_WARPED, 30, 20);
+    }
+
+
+    public static void registerBlocksAsFuels() {
+        FuelRegistryEvents.BUILD.register((builder, context) -> {
+            builder.add(BOOKSHELF_SPRUCE, 300);
+            builder.add(BOOKSHELF_ACACIA, 300);
+            builder.add(BOOKSHELF_BIRCH, 300);
+            builder.add(BOOKSHELF_CRIMSON, 300);
+            builder.add(BOOKSHELF_DARK_OAK, 300);
+            builder.add(BOOKSHELF_WARPED, 300);
+        });
     }
 
 }

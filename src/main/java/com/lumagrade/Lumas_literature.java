@@ -21,6 +21,6 @@ public class Lumas_literature implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Loading " + MOD_ID);
-		BookshelfBlocks.registerModBlocks();
+		BookshelfBlocks.initialize();
 	}
 }

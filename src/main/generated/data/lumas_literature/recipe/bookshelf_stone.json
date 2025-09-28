@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:book"
-    },
-    "P": {
-      "item": "minecraft:stone"
-    }
+    "B": "minecraft:book",
+    "P": "minecraft:stone"
   },
   "pattern": [
     "PPP",

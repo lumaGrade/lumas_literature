@@ -1,11 +1,16 @@
 package com.lumagrade.datagen;
 
+import com.lumagrade.Lumas_literature;
 import com.lumagrade.block.BookshelfBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
+import net.minecraft.block.Block;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -15,9 +20,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         super(output, registriesFuture);
     }
 
+
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+        valueLookupBuilder(BlockTags.AXE_MINEABLE)
                 .add(BookshelfBlocks.BOOKSHELF_SPRUCE)
                 .add(BookshelfBlocks.BOOKSHELF_ACACIA)
                 .add(BookshelfBlocks.BOOKSHELF_BIRCH)
@@ -31,7 +37,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BookshelfBlocks.BOOKSHELF_BAMBOO)
                 .add(BookshelfBlocks.BOOKSHELF_MOSSY_STONE);
 
-        getOrCreateTagBuilder(BlockTags.ENCHANTMENT_POWER_PROVIDER)
+        valueLookupBuilder(BlockTags.ENCHANTMENT_POWER_PROVIDER)
                 .add(BookshelfBlocks.BOOKSHELF_SPRUCE)
                 .add(BookshelfBlocks.BOOKSHELF_ACACIA)
                 .add(BookshelfBlocks.BOOKSHELF_BIRCH)
@@ -45,7 +51,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BookshelfBlocks.BOOKSHELF_BAMBOO)
                 .add(BookshelfBlocks.BOOKSHELF_MOSSY_STONE);
 
-        getOrCreateTagBuilder(ConventionalBlockTags.BOOKSHELVES)
+        valueLookupBuilder(ConventionalBlockTags.BOOKSHELVES)
                 .add(BookshelfBlocks.BOOKSHELF_SPRUCE)
                 .add(BookshelfBlocks.BOOKSHELF_ACACIA)
                 .add(BookshelfBlocks.BOOKSHELF_BIRCH)

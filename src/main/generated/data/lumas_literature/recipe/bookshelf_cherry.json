@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:book"
-    },
-    "P": {
-      "item": "minecraft:cherry_planks"
-    }
+    "B": "minecraft:book",
+    "P": "minecraft:cherry_planks"
   },
   "pattern": [
     "PPP",
